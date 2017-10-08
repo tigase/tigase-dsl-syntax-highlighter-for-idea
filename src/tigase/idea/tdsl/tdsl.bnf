@@ -1,0 +1,43 @@
+{
+  parserClass="tigase.idea.tdsl.psi.TDSLParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="TDSL"
+  psiImplClassSuffix="Impl"
+  psiPackage="tigase.idea.tdsl.psi"
+  psiImplPackage="tigase.idea.tdsl.psi.impl"
+
+  elementTypeHolderClass="tigase.idea.tdsl.psi.TDSLTypes"
+  elementTypeClass="tigase.idea.tdsl.psi.TDSLElementType"
+  tokenTypeClass="tigase.idea.tdsl.psi.TDSLTokenType"
+
+  tokens = [
+    objName = "regexp:(\'.+\')|\w+"
+    string = "regexp:\"[^\"]*\"|'[^']*'"
+    number = "regexp:(\+|\-)?\p{Digit}*[dDfFlL]?"
+    boolean = "regexp:(true)|(false)"
+    LCURLY = "{"
+    RCURLY = "}"
+    LPAREN = "("
+    RPAREN = ")"
+    LBRACK = "["
+    RBRACK = "]"
+    beanCfgPropName = "regexp:(class|active|exportable)"
+    beanCfgPropValue = "regexp:[^\ ,\)]+"
+    operatorAdd = "+"
+    operatorSubstract = "-"
+    operatorMultiply = "*"
+    operatorDivide = "/"
+    envPropFnName = "regexp:(env|prop)"
+  ]
+}
+
+root ::= (prop|bean|COMMENT)*
+
+bean ::= objName [ LPAREN [ (beanCfgPropName ":" beanCfgPropValue) ("," beanCfgPropName ":" beanCfgPropValue)* ] RPAREN ] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
+
+//expression ::= value expressionOperator value
+envFunction ::= envPropFnName LPAREN string ("," string)? RPAREN
+value ::= (number (operatorAdd|operatorSubstract|operatorMMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value ("," value)* RBRACK) | envFunction | string | number | boolean
+prop ::= objName ASSIGNMENT value
