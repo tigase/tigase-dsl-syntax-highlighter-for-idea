@@ -5,13 +5,11 @@
   <vendor email="support@tigase.com" url="http://tigase.net">Tigase, Inc.</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Adds support for Tigase DSL file format used by Tigase XMPP Server configuration files from version 8.0.0.
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      Initial version of a plugin.
     ]]>
   </change-notes>
 
