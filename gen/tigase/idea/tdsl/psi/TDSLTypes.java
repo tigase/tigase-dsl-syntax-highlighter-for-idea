@@ -16,6 +16,7 @@ public interface TDSLTypes {
   IElementType ASSIGNMENT = new TDSLTokenType("ASSIGNMENT");
   IElementType BEANCFGPROPNAME = new TDSLTokenType("beanCfgPropName");
   IElementType BEANCFGPROPVALUE = new TDSLTokenType("beanCfgPropValue");
+  IElementType BEANNAME = new TDSLTokenType("beanName");
   IElementType BOOLEAN = new TDSLTokenType("boolean");
   IElementType COMMENT = new TDSLTokenType("COMMENT");
   IElementType ENVPROPFNNAME = new TDSLTokenType("envPropFnName");
@@ -23,12 +24,11 @@ public interface TDSLTypes {
   IElementType LCURLY = new TDSLTokenType("{");
   IElementType LPAREN = new TDSLTokenType("(");
   IElementType NUMBER = new TDSLTokenType("number");
-  IElementType OBJNAME = new TDSLTokenType("objName");
   IElementType OPERATORADD = new TDSLTokenType("+");
   IElementType OPERATORDIVIDE = new TDSLTokenType("/");
-  IElementType OPERATORMMULTIPLY = new TDSLTokenType("operatorMMultiply");
   IElementType OPERATORMULTIPLY = new TDSLTokenType("*");
   IElementType OPERATORSUBSTRACT = new TDSLTokenType("-");
+  IElementType PROPNAME = new TDSLTokenType("propName");
   IElementType RBRACK = new TDSLTokenType("]");
   IElementType RCURLY = new TDSLTokenType("}");
   IElementType RPAREN = new TDSLTokenType(")");

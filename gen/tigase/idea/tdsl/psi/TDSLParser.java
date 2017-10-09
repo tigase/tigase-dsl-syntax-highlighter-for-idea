@@ -46,13 +46,13 @@ public class TDSLParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // objName [ LPAREN [ (beanCfgPropName ":" beanCfgPropValue) ("," beanCfgPropName ":" beanCfgPropValue)* ] RPAREN ] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
+  // beanName [ LPAREN [ (beanCfgPropName ":" (boolean|beanCfgPropValue)) ("," beanCfgPropName ":" (boolean|beanCfgPropValue))* ] RPAREN ] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
   public static boolean bean(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean")) return false;
-    if (!nextTokenIs(b, OBJNAME)) return false;
+    if (!nextTokenIs(b, BEANNAME)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, OBJNAME);
+    r = consumeToken(b, BEANNAME);
     r = r && bean_1(b, l + 1);
     r = r && consumeToken(b, LCURLY);
     r = r && bean_3(b, l + 1);
@@ -61,14 +61,14 @@ public class TDSLParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [ LPAREN [ (beanCfgPropName ":" beanCfgPropValue) ("," beanCfgPropName ":" beanCfgPropValue)* ] RPAREN ]
+  // [ LPAREN [ (beanCfgPropName ":" (boolean|beanCfgPropValue)) ("," beanCfgPropName ":" (boolean|beanCfgPropValue))* ] RPAREN ]
   private static boolean bean_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean_1")) return false;
     bean_1_0(b, l + 1);
     return true;
   }
 
-  // LPAREN [ (beanCfgPropName ":" beanCfgPropValue) ("," beanCfgPropName ":" beanCfgPropValue)* ] RPAREN
+  // LPAREN [ (beanCfgPropName ":" (boolean|beanCfgPropValue)) ("," beanCfgPropName ":" (boolean|beanCfgPropValue))* ] RPAREN
   private static boolean bean_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean_1_0")) return false;
     boolean r;
@@ -80,14 +80,14 @@ public class TDSLParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [ (beanCfgPropName ":" beanCfgPropValue) ("," beanCfgPropName ":" beanCfgPropValue)* ]
+  // [ (beanCfgPropName ":" (boolean|beanCfgPropValue)) ("," beanCfgPropName ":" (boolean|beanCfgPropValue))* ]
   private static boolean bean_1_0_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean_1_0_1")) return false;
     bean_1_0_1_0(b, l + 1);
     return true;
   }
 
-  // (beanCfgPropName ":" beanCfgPropValue) ("," beanCfgPropName ":" beanCfgPropValue)*
+  // (beanCfgPropName ":" (boolean|beanCfgPropValue)) ("," beanCfgPropName ":" (boolean|beanCfgPropValue))*
   private static boolean bean_1_0_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean_1_0_1_0")) return false;
     boolean r;
@@ -98,19 +98,30 @@ public class TDSLParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // beanCfgPropName ":" beanCfgPropValue
+  // beanCfgPropName ":" (boolean|beanCfgPropValue)
   private static boolean bean_1_0_1_0_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean_1_0_1_0_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, BEANCFGPROPNAME);
     r = r && consumeToken(b, ":");
-    r = r && consumeToken(b, BEANCFGPROPVALUE);
+    r = r && bean_1_0_1_0_0_2(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
 
-  // ("," beanCfgPropName ":" beanCfgPropValue)*
+  // boolean|beanCfgPropValue
+  private static boolean bean_1_0_1_0_0_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "bean_1_0_1_0_0_2")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, BOOLEAN);
+    if (!r) r = consumeToken(b, BEANCFGPROPVALUE);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // ("," beanCfgPropName ":" (boolean|beanCfgPropValue))*
   private static boolean bean_1_0_1_0_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean_1_0_1_0_1")) return false;
     int c = current_position_(b);
@@ -122,7 +133,7 @@ public class TDSLParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // "," beanCfgPropName ":" beanCfgPropValue
+  // "," beanCfgPropName ":" (boolean|beanCfgPropValue)
   private static boolean bean_1_0_1_0_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "bean_1_0_1_0_1_0")) return false;
     boolean r;
@@ -130,7 +141,18 @@ public class TDSLParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, ",");
     r = r && consumeToken(b, BEANCFGPROPNAME);
     r = r && consumeToken(b, ":");
-    r = r && consumeToken(b, BEANCFGPROPVALUE);
+    r = r && bean_1_0_1_0_1_0_3(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // boolean|beanCfgPropValue
+  private static boolean bean_1_0_1_0_1_0_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "bean_1_0_1_0_1_0_3")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, BOOLEAN);
+    if (!r) r = consumeToken(b, BEANCFGPROPVALUE);
     exit_section_(b, m, null, r);
     return r;
   }
@@ -199,13 +221,13 @@ public class TDSLParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // objName ASSIGNMENT value
+  // propName ASSIGNMENT value
   public static boolean prop(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "prop")) return false;
-    if (!nextTokenIs(b, OBJNAME)) return false;
+    if (!nextTokenIs(b, PROPNAME)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, OBJNAME, ASSIGNMENT);
+    r = consumeTokens(b, 0, PROPNAME, ASSIGNMENT);
     r = r && value(b, l + 1);
     exit_section_(b, m, PROP, r);
     return r;
@@ -237,7 +259,7 @@ public class TDSLParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (number (operatorAdd|operatorSubstract|operatorMMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value ("," value)* RBRACK) | envFunction | string | number | boolean
+  // (number (operatorAdd|operatorSubstract|operatorMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value ("," value)* RBRACK) | envFunction | string | number | boolean
   public static boolean value(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "value")) return false;
     boolean r;
@@ -253,7 +275,7 @@ public class TDSLParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // number (operatorAdd|operatorSubstract|operatorMMultiply|operatorDivide) number
+  // number (operatorAdd|operatorSubstract|operatorMultiply|operatorDivide) number
   private static boolean value_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "value_0")) return false;
     boolean r;
@@ -265,14 +287,14 @@ public class TDSLParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // operatorAdd|operatorSubstract|operatorMMultiply|operatorDivide
+  // operatorAdd|operatorSubstract|operatorMultiply|operatorDivide
   private static boolean value_0_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "value_0_1")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, OPERATORADD);
     if (!r) r = consumeToken(b, OPERATORSUBSTRACT);
-    if (!r) r = consumeToken(b, OPERATORMMULTIPLY);
+    if (!r) r = consumeToken(b, OPERATORMULTIPLY);
     if (!r) r = consumeToken(b, OPERATORDIVIDE);
     exit_section_(b, m, null, r);
     return r;

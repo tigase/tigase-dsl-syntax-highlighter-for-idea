@@ -26,8 +26,14 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
+    <additionalTextAttributes scheme="Darcula" file="colorSchemes/TDSLDarcula.xml"/>
+    <additionalTextAttributes scheme="Default" file="colorSchemes/TDSLDefault.xml"/>
+
     <fileTypeFactory implementation="tigase.idea.tdsl.TDSLFileTypeFactory" />
+    <lang.commenter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLCommenter" />
     <lang.parserDefinition language="TDSL" implementationClass="tigase.idea.tdsl.TDSLParserDefinition" />
+    <lang.syntaxHighlighterFactory language="TDSL" implementationClass="tigase.idea.tdsl.TDSLSyntaxHighlighterFactory" />
+    <colorSettingsPage implementation="tigase.idea.tdsl.TDSLColorSettingsPage" />
   </extensions>
 
   <actions>

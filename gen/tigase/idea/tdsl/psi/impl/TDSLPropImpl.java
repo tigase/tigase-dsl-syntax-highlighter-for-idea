@@ -34,8 +34,8 @@ public class TDSLPropImpl extends ASTWrapperPsiElement implements TDSLProp {
 
   @Override
   @NotNull
-  public PsiElement getObjName() {
-    return findNotNullChildByType(OBJNAME);
+  public PsiElement getPropName() {
+    return findNotNullChildByType(PROPNAME);
   }
 
 }

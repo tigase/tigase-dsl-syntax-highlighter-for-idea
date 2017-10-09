@@ -14,6 +14,6 @@ public interface TDSLBean extends PsiElement {
   List<TDSLProp> getPropList();
 
   @NotNull
-  PsiElement getObjName();
+  PsiElement getBeanName();
 
 }

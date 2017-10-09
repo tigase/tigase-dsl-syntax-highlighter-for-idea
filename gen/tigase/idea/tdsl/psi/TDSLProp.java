@@ -11,6 +11,6 @@ public interface TDSLProp extends PsiElement {
   TDSLValue getValue();
 
   @NotNull
-  PsiElement getObjName();
+  PsiElement getPropName();
 
 }

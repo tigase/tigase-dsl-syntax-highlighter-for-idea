@@ -40,8 +40,8 @@ public class TDSLBeanImpl extends ASTWrapperPsiElement implements TDSLBean {
 
   @Override
   @NotNull
-  public PsiElement getObjName() {
-    return findNotNullChildByType(OBJNAME);
+  public PsiElement getBeanName() {
+    return findNotNullChildByType(BEANNAME);
   }
 
 }

@@ -30,7 +30,7 @@ NUMBER=[0-9]+[dDfFlL]?
 BOOLEAN="true" | "false"
 END_OF_LINE_COMMENT="#"[^\r\n]*
 ASSIGNMENT==
-KEY_CHARACTER=[^:=\ \n\t\f\\\(] | "\\ "
+KEY=(\'.+\')|\w+
 EXPRESSION_OPERATOR=("+"|"-"|"*"|"/")
 
 BEAN_CFG_PROP_NAME="class" | "active" | "exportable"
@@ -72,6 +72,10 @@ ENV_PROP_FN_NAMES=("env"|"prop")
     yybegin(BEAN_CFG_PROPS_WAITING_VALUE);
     return storeToken(BEANCFGPROPNAME);
 }
+<BEAN_CFG_PROPS_WAITING_VALUE> {BOOLEAN} {
+    yybegin(BEAN_CFG_PROPS);
+    return storeToken(TDSLTypes.BOOLEAN);
+}
 <BEAN_CFG_PROPS_WAITING_VALUE> {BEAN_CFG_PROP_VALUE} {
     yybegin(BEAN_CFG_PROPS);
     return storeToken(BEANCFGPROPVALUE);
@@ -80,7 +84,23 @@ ENV_PROP_FN_NAMES=("env"|"prop")
 //    return TokenType.BAD_CHARACTER;
 //}
 
-<YYINITIAL> {KEY_CHARACTER}+                                { yybegin(YYINITIAL); return TDSLTypes.OBJNAME; }
+<YYINITIAL> {KEY}({WHITE_SPACE})*"(" {
+    yybegin(YYINITIAL);
+    yypushback(1);
+    return TDSLTypes.BEANNAME;
+}
+
+<YYINITIAL> {KEY}({WHITE_SPACE})*"{" {
+    yybegin(YYINITIAL);
+    yypushback(1);
+    return TDSLTypes.BEANNAME;
+}
+
+<YYINITIAL> {KEY}({WHITE_SPACE})*"=" {
+    yybegin(YYINITIAL);
+    yypushback(1);
+    return TDSLTypes.PROPNAME;
+}
 
 <YYINITIAL> {ASSIGNMENT}                                     { yybegin(WAITING_VALUE); return TDSLTypes.ASSIGNMENT; }
 
@@ -106,11 +126,21 @@ ENV_PROP_FN_NAMES=("env"|"prop")
     return storeToken(TDSLTypes.RPAREN);
 }
 
-<WAITING_VALUE> {CRLF}({CRLF}|{WHITE_SPACE})+               { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+<WAITING_VALUE> {CRLF}({CRLF}|{WHITE_SPACE})+               {
+    if (!isWithinBraces()) {
+        yybegin(YYINITIAL);
+    }
+    return TokenType.WHITE_SPACE;
+}
 
 <WAITING_VALUE> {WHITE_SPACE}+                              { return TokenType.WHITE_SPACE; }
 
-{NEW_LINE}                                  { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+{NEW_LINE} {
+    if (!isWithinBraces()) {
+        yybegin(YYINITIAL);
+    }
+    return TokenType.WHITE_SPACE;
+}
 
 <WAITING_VALUE> {STRING}*                                   { return TDSLTypes.STRING; }
 

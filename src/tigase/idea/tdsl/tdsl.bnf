@@ -13,7 +13,8 @@
   tokenTypeClass="tigase.idea.tdsl.psi.TDSLTokenType"
 
   tokens = [
-    objName = "regexp:(\'.+\')|\w+"
+    propName = "regexp:(\'.+\')|\w+"
+    beanName = "regexp:(\'.+\')|\w+"
     string = "regexp:\"[^\"]*\"|'[^']*'"
     number = "regexp:(\+|\-)?\p{Digit}*[dDfFlL]?"
     boolean = "regexp:(true)|(false)"
@@ -35,9 +36,10 @@
 
 root ::= (prop|bean|COMMENT)*
 
-bean ::= objName [ LPAREN [ (beanCfgPropName ":" beanCfgPropValue) ("," beanCfgPropName ":" beanCfgPropValue)* ] RPAREN ] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
+//beanName ::= objName
+bean ::= beanName [ LPAREN [ (beanCfgPropName ":" (boolean|beanCfgPropValue)) ("," beanCfgPropName ":" (boolean|beanCfgPropValue))* ] RPAREN ] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
 
 //expression ::= value expressionOperator value
 envFunction ::= envPropFnName LPAREN string ("," string)? RPAREN
-value ::= (number (operatorAdd|operatorSubstract|operatorMMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value ("," value)* RBRACK) | envFunction | string | number | boolean
-prop ::= objName ASSIGNMENT value
+value ::= (number (operatorAdd|operatorSubstract|operatorMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value ("," value)* RBRACK) | envFunction | string | number | boolean
+prop ::= propName ASSIGNMENT value
