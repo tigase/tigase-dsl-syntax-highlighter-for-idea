@@ -83,22 +83,34 @@ ENV_PROP_FN_NAMES=("env"|"prop")
 //<BEAN_CFG_PROPS> {WHITE_SPACE}* {
 //    return TokenType.BAD_CHARACTER;
 //}
+<YYINITIAL> {WHITE_SPACE} {
+    return TokenType.WHITE_SPACE;
+}
 
 <YYINITIAL> {KEY}({WHITE_SPACE})*"(" {
     yybegin(YYINITIAL);
     yypushback(1);
+    while (yycharat(yylength()-1) == ' ' || yycharat(yylength()-1) == '\t' || yycharat(yylength()-1) == '\f') {
+        yypushback(1);
+    }
     return TDSLTypes.BEANNAME;
 }
 
 <YYINITIAL> {KEY}({WHITE_SPACE})*"{" {
     yybegin(YYINITIAL);
     yypushback(1);
+    while (yycharat(yylength()-1) == ' ' || yycharat(yylength()-1) == '\t' || yycharat(yylength()-1) == '\f') {
+        yypushback(1);
+    }
     return TDSLTypes.BEANNAME;
 }
 
 <YYINITIAL> {KEY}({WHITE_SPACE})*"=" {
     yybegin(YYINITIAL);
     yypushback(1);
+    while (yycharat(yylength()-1) == ' ' || yycharat(yylength()-1) == '\t' || yycharat(yylength()-1) == '\f') {
+        yypushback(1);
+    }
     return TDSLTypes.PROPNAME;
 }
 
@@ -147,6 +159,15 @@ ENV_PROP_FN_NAMES=("env"|"prop")
 <WAITING_VALUE> {NUMBER}*                                   { return TDSLTypes.NUMBER; }
 
 <WAITING_VALUE> {BOOLEAN}*                                  { return TDSLTypes.BOOLEAN; }
+
+"," {
+    return TDSLTypes.COMMA;
+}
+
+":" {
+    return TDSLTypes.COLON;
+}
+
 
 ({CRLF}|{WHITE_SPACE})+                                     { return TokenType.WHITE_SPACE; }
 

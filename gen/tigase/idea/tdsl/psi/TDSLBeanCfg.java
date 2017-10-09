@@ -5,18 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface TDSLBean extends PsiElement {
+public interface TDSLBeanCfg extends PsiElement {
 
   @NotNull
-  List<TDSLBean> getBeanList();
-
-  @Nullable
-  TDSLBeanCfg getBeanCfg();
-
-  @NotNull
-  List<TDSLProp> getPropList();
-
-  @NotNull
-  PsiElement getBeanName();
+  List<TDSLBeanCfgPropPair> getBeanCfgPropPairList();
 
 }

@@ -11,14 +11,14 @@ import static tigase.idea.tdsl.psi.TDSLTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import tigase.idea.tdsl.psi.*;
 
-public class TDSLBeanImpl extends ASTWrapperPsiElement implements TDSLBean {
+public class TDSLBeanCfgImpl extends ASTWrapperPsiElement implements TDSLBeanCfg {
 
-  public TDSLBeanImpl(ASTNode node) {
+  public TDSLBeanCfgImpl(ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull TDSLVisitor visitor) {
-    visitor.visitBean(this);
+    visitor.visitBeanCfg(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,26 +28,8 @@ public class TDSLBeanImpl extends ASTWrapperPsiElement implements TDSLBean {
 
   @Override
   @NotNull
-  public List<TDSLBean> getBeanList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TDSLBean.class);
-  }
-
-  @Override
-  @Nullable
-  public TDSLBeanCfg getBeanCfg() {
-    return findChildByClass(TDSLBeanCfg.class);
-  }
-
-  @Override
-  @NotNull
-  public List<TDSLProp> getPropList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TDSLProp.class);
-  }
-
-  @Override
-  @NotNull
-  public PsiElement getBeanName() {
-    return findNotNullChildByType(BEANNAME);
+  public List<TDSLBeanCfgPropPair> getBeanCfgPropPairList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, TDSLBeanCfgPropPair.class);
   }
 
 }

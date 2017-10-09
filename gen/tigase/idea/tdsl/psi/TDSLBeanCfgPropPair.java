@@ -5,18 +5,15 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface TDSLBean extends PsiElement {
+public interface TDSLBeanCfgPropPair extends PsiElement {
 
   @NotNull
-  List<TDSLBean> getBeanList();
+  PsiElement getBeanCfgPropName();
 
   @Nullable
-  TDSLBeanCfg getBeanCfg();
+  PsiElement getBeanCfgPropValue();
 
-  @NotNull
-  List<TDSLProp> getPropList();
-
-  @NotNull
-  PsiElement getBeanName();
+  @Nullable
+  PsiElement getBoolean();
 
 }

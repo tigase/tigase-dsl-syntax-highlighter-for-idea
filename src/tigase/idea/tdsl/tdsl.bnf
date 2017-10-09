@@ -31,15 +31,19 @@
     operatorMultiply = "*"
     operatorDivide = "/"
     envPropFnName = "regexp:(env|prop)"
+    comma = ","
+    colon = ":"
   ]
 }
 
 root ::= (prop|bean|COMMENT)*
 
 //beanName ::= objName
-bean ::= beanName [ LPAREN [ (beanCfgPropName ":" (boolean|beanCfgPropValue)) ("," beanCfgPropName ":" (boolean|beanCfgPropValue))* ] RPAREN ] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
+beanCfgPropPair ::= beanCfgPropName colon (boolean|beanCfgPropValue)
+beanCfg ::= LPAREN [ beanCfgPropPair (comma beanCfgPropPair)* ] RPAREN
+bean ::= beanName [ beanCfg] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
 
 //expression ::= value expressionOperator value
 envFunction ::= envPropFnName LPAREN string ("," string)? RPAREN
-value ::= (number (operatorAdd|operatorSubstract|operatorMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value ("," value)* RBRACK) | envFunction | string | number | boolean
+value ::= (number (operatorAdd|operatorSubstract|operatorMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value (comma value)* RBRACK) | envFunction | string | number | boolean
 prop ::= propName ASSIGNMENT value

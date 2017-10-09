@@ -9,6 +9,8 @@ import tigase.idea.tdsl.psi.impl.*;
 public interface TDSLTypes {
 
   IElementType BEAN = new TDSLElementType("BEAN");
+  IElementType BEAN_CFG = new TDSLElementType("BEAN_CFG");
+  IElementType BEAN_CFG_PROP_PAIR = new TDSLElementType("BEAN_CFG_PROP_PAIR");
   IElementType ENV_FUNCTION = new TDSLElementType("ENV_FUNCTION");
   IElementType PROP = new TDSLElementType("PROP");
   IElementType VALUE = new TDSLElementType("VALUE");
@@ -18,6 +20,8 @@ public interface TDSLTypes {
   IElementType BEANCFGPROPVALUE = new TDSLTokenType("beanCfgPropValue");
   IElementType BEANNAME = new TDSLTokenType("beanName");
   IElementType BOOLEAN = new TDSLTokenType("boolean");
+  IElementType COLON = new TDSLTokenType(":");
+  IElementType COMMA = new TDSLTokenType(",");
   IElementType COMMENT = new TDSLTokenType("COMMENT");
   IElementType ENVPROPFNNAME = new TDSLTokenType("envPropFnName");
   IElementType LBRACK = new TDSLTokenType("[");
@@ -39,6 +43,12 @@ public interface TDSLTypes {
       IElementType type = node.getElementType();
        if (type == BEAN) {
         return new TDSLBeanImpl(node);
+      }
+      else if (type == BEAN_CFG) {
+        return new TDSLBeanCfgImpl(node);
+      }
+      else if (type == BEAN_CFG_PROP_PAIR) {
+        return new TDSLBeanCfgPropPairImpl(node);
       }
       else if (type == ENV_FUNCTION) {
         return new TDSLEnvFunctionImpl(node);

@@ -11,14 +11,14 @@ import static tigase.idea.tdsl.psi.TDSLTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import tigase.idea.tdsl.psi.*;
 
-public class TDSLBeanImpl extends ASTWrapperPsiElement implements TDSLBean {
+public class TDSLBeanCfgPropPairImpl extends ASTWrapperPsiElement implements TDSLBeanCfgPropPair {
 
-  public TDSLBeanImpl(ASTNode node) {
+  public TDSLBeanCfgPropPairImpl(ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull TDSLVisitor visitor) {
-    visitor.visitBean(this);
+    visitor.visitBeanCfgPropPair(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,26 +28,20 @@ public class TDSLBeanImpl extends ASTWrapperPsiElement implements TDSLBean {
 
   @Override
   @NotNull
-  public List<TDSLBean> getBeanList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TDSLBean.class);
+  public PsiElement getBeanCfgPropName() {
+    return findNotNullChildByType(BEANCFGPROPNAME);
   }
 
   @Override
   @Nullable
-  public TDSLBeanCfg getBeanCfg() {
-    return findChildByClass(TDSLBeanCfg.class);
+  public PsiElement getBeanCfgPropValue() {
+    return findChildByType(BEANCFGPROPVALUE);
   }
 
   @Override
-  @NotNull
-  public List<TDSLProp> getPropList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TDSLProp.class);
-  }
-
-  @Override
-  @NotNull
-  public PsiElement getBeanName() {
-    return findNotNullChildByType(BEANNAME);
+  @Nullable
+  public PsiElement getBoolean() {
+    return findChildByType(BOOLEAN);
   }
 
 }

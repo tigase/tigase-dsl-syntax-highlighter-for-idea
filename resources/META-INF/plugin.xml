@@ -29,9 +29,13 @@
 
     <fileTypeFactory implementation="tigase.idea.tdsl.TDSLFileTypeFactory" />
     <lang.commenter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLCommenter" />
+    <lang.formatter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLFormattingModelBuilder" />
     <lang.parserDefinition language="TDSL" implementationClass="tigase.idea.tdsl.TDSLParserDefinition" />
     <lang.syntaxHighlighterFactory language="TDSL" implementationClass="tigase.idea.tdsl.TDSLSyntaxHighlighterFactory" />
     <colorSettingsPage implementation="tigase.idea.tdsl.TDSLColorSettingsPage" />
+
+    <codeStyleSettingsProvider implementation="tigase.idea.tdsl.TDSLCodeStyleSettingsProvider" />
+    <langCodeStyleSettingsProvider implementation="tigase.idea.tdsl.TDSLLanguageCodeStyleSettingsProvider" />
   </extensions>
 
   <actions>

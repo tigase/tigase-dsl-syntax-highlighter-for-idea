@@ -117,7 +117,7 @@ class TDSLLexer extends TDSLLexerBase {
   /* The ZZ_CMAP_A table has 3168 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
     "\11\0\1\4\1\2\1\1\1\5\1\3\22\0\1\6\1\0\1\10\1\23\3\0\1\7\1\45\1\46\1\30\1"+
-    "\26\1\41\1\27\1\0\1\31\12\11\1\41\2\0\1\24\3\0\3\25\1\12\1\25\1\12\5\25\1"+
+    "\26\1\51\1\27\1\0\1\31\12\11\1\41\2\0\1\24\3\0\3\25\1\12\1\25\1\12\5\25\1"+
     "\12\16\25\1\47\1\0\1\50\1\0\1\25\1\0\1\20\1\40\1\32\1\12\1\16\1\17\2\25\1"+
     "\33\2\25\1\21\1\25\1\42\1\37\1\36\1\25\1\14\1\22\1\13\1\15\1\34\1\25\1\35"+
     "\2\25\1\44\1\0\1\43\7\0\1\1\24\0\1\25\12\0\1\25\4\0\1\25\5\0\27\25\1\0\12"+
@@ -175,15 +175,15 @@ class TDSLLexer extends TDSLLexerBase {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\1\0\1\1\2\0\1\2\1\3\1\4\2\2\1\5"+
-    "\1\6\1\7\1\10\1\11\1\3\1\4\2\2\1\12"+
-    "\3\2\1\13\1\14\1\15\1\16\1\2\1\17\1\20"+
-    "\1\21\1\22\3\2\1\23\4\24\1\10\3\0\1\25"+
-    "\1\26\1\0\1\1\1\0\1\12\7\0\2\24\2\0"+
-    "\1\27\5\0\2\24\1\25\1\26\1\30\3\0\1\31"+
-    "\4\0\1\32\3\0";
+    "\1\6\1\7\1\10\1\11\1\12\1\13\1\3\1\4"+
+    "\2\2\1\14\3\2\1\15\1\16\1\17\1\20\1\2"+
+    "\1\21\1\22\1\23\1\24\3\2\1\25\4\26\1\11"+
+    "\3\0\1\27\1\30\1\0\1\1\1\0\1\14\7\0"+
+    "\2\26\2\0\1\31\5\0\2\26\1\27\1\30\1\32"+
+    "\3\0\1\33\4\0\1\34\3\0";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[83];
+    int [] result = new int[85];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -208,20 +208,20 @@ class TDSLLexer extends TDSLLexerBase {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\51\0\122\0\173\0\244\0\315\0\315\0\366"+
-    "\0\u011f\0\u0148\0\244\0\244\0\244\0\244\0\u0171\0\u0171"+
-    "\0\u019a\0\u01c3\0\u01ec\0\u0215\0\u023e\0\u0267\0\244\0\244"+
-    "\0\244\0\244\0\u0290\0\244\0\244\0\244\0\244\0\u02b9"+
-    "\0\u02e2\0\u030b\0\244\0\u0334\0\u035d\0\u0386\0\u03af\0\u0334"+
-    "\0\u03d8\0\u0401\0\u011f\0\244\0\244\0\u019a\0\u042a\0\u01c3"+
-    "\0\u0453\0\u047c\0\u04a5\0\u04ce\0\u04f7\0\u0520\0\u0549\0\u0572"+
-    "\0\u059b\0\u05c4\0\u05ed\0\u0616\0\244\0\u063f\0\u0668\0\u0691"+
-    "\0\u06ba\0\u06e3\0\u070c\0\u0735\0\u03d8\0\u03d8\0\u075e\0\u0787"+
-    "\0\u07b0\0\u07d9\0\u0334\0\u0215\0\u0267\0\u0802\0\u082b\0\244"+
-    "\0\u0854\0\u087d\0\u08a6";
+    "\0\0\0\52\0\124\0\176\0\250\0\322\0\322\0\374"+
+    "\0\u0126\0\u0150\0\250\0\250\0\250\0\250\0\250\0\250"+
+    "\0\u017a\0\u017a\0\u01a4\0\u01ce\0\u01f8\0\u0222\0\u024c\0\u0276"+
+    "\0\250\0\250\0\250\0\250\0\u02a0\0\250\0\250\0\250"+
+    "\0\250\0\u02ca\0\u02f4\0\u031e\0\250\0\u0348\0\u0372\0\u039c"+
+    "\0\u03c6\0\u0348\0\u03f0\0\u041a\0\u0126\0\250\0\250\0\u01a4"+
+    "\0\u0444\0\u01ce\0\u046e\0\u0498\0\u04c2\0\u04ec\0\u0516\0\u0540"+
+    "\0\u056a\0\u0594\0\u05be\0\u05e8\0\u0612\0\u063c\0\250\0\u0666"+
+    "\0\u0690\0\u06ba\0\u06e4\0\u070e\0\u0738\0\u0762\0\u03f0\0\u03f0"+
+    "\0\u078c\0\u07b6\0\u07e0\0\u080a\0\u0348\0\u0222\0\u0276\0\u0834"+
+    "\0\u085e\0\250\0\u0888\0\u08b2\0\u08dc";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[83];
+    int [] result = new int[85];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -245,42 +245,45 @@ class TDSLLexer extends TDSLLexerBase {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\5\1\6\1\7\4\6\1\10\1\5\12\11\1\12"+
-    "\1\13\1\11\4\5\7\11\1\5\1\11\1\14\1\15"+
-    "\1\16\4\5\1\17\1\20\1\17\1\6\1\17\1\6"+
-    "\1\21\1\22\1\23\1\5\1\24\2\5\1\25\1\26"+
-    "\6\5\1\27\1\30\1\31\1\32\4\5\1\33\5\5"+
-    "\1\15\1\34\1\35\1\36\1\37\1\5\1\6\1\7"+
-    "\4\6\7\5\1\40\1\5\1\41\11\5\1\42\11\5"+
-    "\1\15\1\5\1\43\2\5\1\44\5\45\1\6\4\44"+
-    "\1\46\3\44\1\47\21\44\1\5\2\44\1\50\1\44"+
-    "\1\5\2\44\52\0\6\6\42\0\1\51\3\0\1\51"+
-    "\1\0\43\51\4\0\3\52\2\0\12\53\1\0\1\54"+
-    "\1\53\4\0\7\53\1\0\1\53\1\0\2\55\3\0"+
-    "\2\12\2\0\45\12\1\0\6\20\42\0\7\56\1\57"+
-    "\41\56\10\60\1\57\40\60\11\0\1\23\1\61\4\0"+
-    "\1\61\1\0\1\61\43\0\1\62\76\0\1\63\26\0"+
-    "\1\64\44\0\1\65\71\0\1\66\45\0\1\67\37\0"+
-    "\1\70\27\0\6\44\1\0\32\44\1\0\4\44\1\0"+
-    "\3\44\5\45\1\6\32\44\1\0\4\44\1\0\10\44"+
-    "\1\0\5\44\1\71\24\44\1\0\4\44\1\0\10\44"+
-    "\1\0\11\44\1\72\20\44\1\0\4\44\1\0\2\44"+
-    "\1\51\3\0\1\51\1\0\1\51\1\73\41\51\4\0"+
-    "\3\52\15\0\1\54\17\0\2\55\12\0\1\56\1\60"+
-    "\51\0\1\23\54\0\1\74\67\0\1\75\35\0\1\76"+
-    "\66\0\1\77\47\0\1\100\25\0\1\101\55\0\1\102"+
-    "\30\0\6\44\1\0\6\44\1\103\23\44\1\0\4\44"+
-    "\1\0\10\44\1\0\12\44\1\104\17\44\1\0\4\44"+
-    "\1\0\2\44\1\51\3\0\1\73\1\52\2\73\14\51"+
-    "\1\105\17\51\2\106\3\51\16\0\1\107\54\0\1\74"+
-    "\64\0\1\75\51\0\1\110\44\0\1\111\37\0\1\112"+
-    "\26\0\6\44\1\0\7\44\1\113\22\44\1\0\4\44"+
-    "\1\0\10\44\1\0\13\44\1\103\16\44\1\0\4\44"+
-    "\1\0\2\44\13\0\1\114\3\0\1\115\45\0\1\116"+
-    "\70\0\1\117\36\0\1\120\41\0\1\121\53\0\1\120"+
-    "\52\0\1\122\70\0\1\123\31\0\1\117\27\0";
+    "\1\13\1\11\4\5\7\11\1\14\1\11\1\15\1\16"+
+    "\1\17\3\5\1\20\1\5\1\21\1\22\1\21\1\6"+
+    "\1\21\1\6\1\23\1\24\1\25\1\5\1\26\2\5"+
+    "\1\27\1\30\6\5\1\31\1\32\1\33\1\34\4\5"+
+    "\1\35\2\5\1\14\2\5\1\16\1\36\1\37\1\40"+
+    "\1\41\1\20\1\5\1\6\1\7\4\6\7\5\1\42"+
+    "\1\5\1\43\11\5\1\44\6\5\1\14\2\5\1\16"+
+    "\1\5\1\45\2\5\1\20\1\46\5\47\1\6\4\46"+
+    "\1\50\3\46\1\51\21\46\1\14\2\46\1\52\1\46"+
+    "\1\5\2\46\1\20\53\0\6\6\43\0\1\53\3\0"+
+    "\1\53\1\0\44\53\4\0\3\54\2\0\12\55\1\0"+
+    "\1\56\1\55\4\0\7\55\1\0\1\55\1\0\2\57"+
+    "\4\0\2\12\2\0\46\12\1\0\6\22\43\0\7\60"+
+    "\1\61\42\60\10\62\1\61\41\62\11\0\1\25\1\63"+
+    "\4\0\1\63\1\0\1\63\44\0\1\64\77\0\1\65"+
+    "\27\0\1\66\45\0\1\67\72\0\1\70\46\0\1\71"+
+    "\40\0\1\72\30\0\6\46\1\0\32\46\1\0\4\46"+
+    "\1\0\2\46\1\0\1\46\5\47\1\6\32\46\1\0"+
+    "\4\46\1\0\2\46\1\0\6\46\1\0\5\46\1\73"+
+    "\24\46\1\0\4\46\1\0\2\46\1\0\6\46\1\0"+
+    "\11\46\1\74\20\46\1\0\4\46\1\0\2\46\1\0"+
+    "\1\53\3\0\1\53\1\0\1\53\1\75\42\53\4\0"+
+    "\3\54\15\0\1\56\17\0\2\57\13\0\1\60\1\62"+
+    "\52\0\1\25\55\0\1\76\70\0\1\77\36\0\1\100"+
+    "\67\0\1\101\50\0\1\102\26\0\1\103\56\0\1\104"+
+    "\31\0\6\46\1\0\6\46\1\105\23\46\1\0\4\46"+
+    "\1\0\2\46\1\0\6\46\1\0\12\46\1\106\17\46"+
+    "\1\0\4\46\1\0\2\46\1\0\1\53\3\0\1\75"+
+    "\1\54\2\75\14\53\1\107\17\53\2\110\4\53\16\0"+
+    "\1\111\55\0\1\76\65\0\1\77\52\0\1\112\45\0"+
+    "\1\113\40\0\1\114\27\0\6\46\1\0\7\46\1\115"+
+    "\22\46\1\0\4\46\1\0\2\46\1\0\6\46\1\0"+
+    "\13\46\1\105\16\46\1\0\4\46\1\0\2\46\14\0"+
+    "\1\116\3\0\1\117\46\0\1\120\71\0\1\121\37\0"+
+    "\1\122\42\0\1\123\54\0\1\122\53\0\1\124\71\0"+
+    "\1\125\32\0\1\121\30\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[2255];
+    int [] result = new int[2310];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -318,13 +321,13 @@ class TDSLLexer extends TDSLLexerBase {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\1\2\0\1\11\5\1\4\11\10\1\4\11"+
+    "\1\0\1\1\2\0\1\11\5\1\6\11\10\1\4\11"+
     "\1\1\4\11\3\1\1\11\5\1\3\0\2\11\1\0"+
     "\1\1\1\0\1\1\7\0\2\1\2\0\1\11\5\0"+
     "\5\1\3\0\1\1\4\0\1\11\3\0";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[83];
+    int [] result = new int[85];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -633,121 +636,135 @@ class TDSLLexer extends TDSLLexerBase {
           case 1: 
             { return TDSLTypes.STRING;
             }
-          case 27: break;
+          case 29: break;
           case 2: 
             { return TokenType.BAD_CHARACTER;
             }
-          case 28: break;
+          case 30: break;
           case 3: 
             { return TokenType.WHITE_SPACE;
             }
-          case 29: break;
+          case 31: break;
           case 4: 
             { if (!isWithinBraces()) {
         yybegin(YYINITIAL);
     }
     return TokenType.WHITE_SPACE;
             }
-          case 30: break;
+          case 32: break;
           case 5: 
             { yybegin(YYINITIAL); return TDSLTypes.COMMENT;
             }
-          case 31: break;
+          case 33: break;
           case 6: 
             { yybegin(WAITING_VALUE); return TDSLTypes.ASSIGNMENT;
             }
-          case 32: break;
+          case 34: break;
           case 7: 
+            { return TDSLTypes.COLON;
+            }
+          case 35: break;
+          case 8: 
             { yyendstate(YYINITIAL);
         return storeToken(RCURLY);
             }
-          case 33: break;
-          case 8: 
+          case 36: break;
+          case 9: 
             { yybeginstate(YYINITIAL);
     return storeToken(LCURLY);
             }
-          case 34: break;
-          case 9: 
+          case 37: break;
+          case 10: 
             { yybeginstate(BEAN_CFG_PROPS);
     return storeToken(LPAREN);
             }
-          case 35: break;
-          case 10: 
-            { return TDSLTypes.NUMBER;
-            }
-          case 36: break;
-          case 11: 
-            { return TDSLTypes.OPERATORADD;
-            }
-          case 37: break;
-          case 12: 
-            { return TDSLTypes.OPERATORSUBSTRACT;
-            }
           case 38: break;
-          case 13: 
-            { return TDSLTypes.OPERATORMULTIPLY;
+          case 11: 
+            { return TDSLTypes.COMMA;
             }
           case 39: break;
-          case 14: 
-            { return TDSLTypes.OPERATORDIVIDE;
+          case 12: 
+            { return TDSLTypes.NUMBER;
             }
           case 40: break;
-          case 15: 
-            { return storeToken(TDSLTypes.LPAREN);
+          case 13: 
+            { return TDSLTypes.OPERATORADD;
             }
           case 41: break;
-          case 16: 
-            { return storeToken(TDSLTypes.RPAREN);
+          case 14: 
+            { return TDSLTypes.OPERATORSUBSTRACT;
             }
           case 42: break;
-          case 17: 
-            { return storeToken(TDSLTypes.LBRACK);
+          case 15: 
+            { return TDSLTypes.OPERATORMULTIPLY;
             }
           case 43: break;
-          case 18: 
-            { return storeToken(TDSLTypes.RBRACK);
+          case 16: 
+            { return TDSLTypes.OPERATORDIVIDE;
             }
           case 44: break;
+          case 17: 
+            { return storeToken(TDSLTypes.LPAREN);
+            }
+          case 45: break;
+          case 18: 
+            { return storeToken(TDSLTypes.RPAREN);
+            }
+          case 46: break;
           case 19: 
+            { return storeToken(TDSLTypes.LBRACK);
+            }
+          case 47: break;
+          case 20: 
+            { return storeToken(TDSLTypes.RBRACK);
+            }
+          case 48: break;
+          case 21: 
             { yyendstate(BEAN_CFG_PROPS);
     return storeToken(RPAREN);
             }
-          case 45: break;
-          case 20: 
+          case 49: break;
+          case 22: 
             { yybegin(BEAN_CFG_PROPS);
     return storeToken(BEANCFGPROPVALUE);
             }
-          case 46: break;
-          case 21: 
+          case 50: break;
+          case 23: 
             { yybegin(YYINITIAL);
     yypushback(1);
+    while (yycharat(yylength()-1) == ' ' || yycharat(yylength()-1) == '\t' || yycharat(yylength()-1) == '\f') {
+        yypushback(1);
+    }
     return TDSLTypes.PROPNAME;
             }
-          case 47: break;
-          case 22: 
+          case 51: break;
+          case 24: 
             { yybegin(YYINITIAL);
     yypushback(1);
+    while (yycharat(yylength()-1) == ' ' || yycharat(yylength()-1) == '\t' || yycharat(yylength()-1) == '\f') {
+        yypushback(1);
+    }
     return TDSLTypes.BEANNAME;
             }
-          case 48: break;
-          case 23: 
+          case 52: break;
+          case 25: 
             { return TDSLTypes.ENVPROPFNNAME;
             }
-          case 49: break;
-          case 24: 
+          case 53: break;
+          case 26: 
             { return TDSLTypes.BOOLEAN;
             }
-          case 50: break;
-          case 25: 
+          case 54: break;
+          case 27: 
             { yybegin(BEAN_CFG_PROPS);
     return storeToken(TDSLTypes.BOOLEAN);
             }
-          case 51: break;
-          case 26: 
+          case 55: break;
+          case 28: 
             { yybegin(BEAN_CFG_PROPS_WAITING_VALUE);
     return storeToken(BEANCFGPROPNAME);
             }
-          case 52: break;
+          case 56: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }
