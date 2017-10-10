@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="language-tigase-dsl-idea:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/language_tigase_dsl_idea_jar</output-path>
+    <root id="archive" name="language-tigase-dsl-idea.jar">
+      <element id="module-output" name="language-tigase-dsl-idea" />
+    </root>
+  </artifact>
+</component>
