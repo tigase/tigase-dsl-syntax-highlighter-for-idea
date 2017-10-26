@@ -11,14 +11,14 @@ import static tigase.idea.tdsl.psi.TDSLTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import tigase.idea.tdsl.psi.*;
 
-public class TDSLBeanImpl extends ASTWrapperPsiElement implements TDSLBean {
+public class TDSLListValueImpl extends ASTWrapperPsiElement implements TDSLListValue {
 
-  public TDSLBeanImpl(ASTNode node) {
+  public TDSLListValueImpl(ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull TDSLVisitor visitor) {
-    visitor.visitBean(this);
+    visitor.visitListValue(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,21 +27,9 @@ public class TDSLBeanImpl extends ASTWrapperPsiElement implements TDSLBean {
   }
 
   @Override
-  @Nullable
-  public TDSLBeanCfg getBeanCfg() {
-    return findChildByClass(TDSLBeanCfg.class);
-  }
-
-  @Override
   @NotNull
-  public TDSLBeanContent getBeanContent() {
-    return findNotNullChildByClass(TDSLBeanContent.class);
-  }
-
-  @Override
-  @NotNull
-  public PsiElement getBeanName() {
-    return findNotNullChildByType(BEANNAME);
+  public List<TDSLValue> getValueList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, TDSLValue.class);
   }
 
 }

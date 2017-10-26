@@ -11,7 +11,9 @@ public interface TDSLTypes {
   IElementType BEAN = new TDSLElementType("BEAN");
   IElementType BEAN_CFG = new TDSLElementType("BEAN_CFG");
   IElementType BEAN_CFG_PROP_PAIR = new TDSLElementType("BEAN_CFG_PROP_PAIR");
+  IElementType BEAN_CONTENT = new TDSLElementType("BEAN_CONTENT");
   IElementType ENV_FUNCTION = new TDSLElementType("ENV_FUNCTION");
+  IElementType LIST_VALUE = new TDSLElementType("LIST_VALUE");
   IElementType PROP = new TDSLElementType("PROP");
   IElementType VALUE = new TDSLElementType("VALUE");
 
@@ -50,8 +52,14 @@ public interface TDSLTypes {
       else if (type == BEAN_CFG_PROP_PAIR) {
         return new TDSLBeanCfgPropPairImpl(node);
       }
+      else if (type == BEAN_CONTENT) {
+        return new TDSLBeanContentImpl(node);
+      }
       else if (type == ENV_FUNCTION) {
         return new TDSLEnvFunctionImpl(node);
+      }
+      else if (type == LIST_VALUE) {
+        return new TDSLListValueImpl(node);
       }
       else if (type == PROP) {
         return new TDSLPropImpl(node);

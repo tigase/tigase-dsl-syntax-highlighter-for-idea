@@ -28,6 +28,7 @@
     <additionalTextAttributes scheme="Default" file="colorSchemes/TDSLDefault.xml"/>
 
     <fileTypeFactory implementation="tigase.idea.tdsl.TDSLFileTypeFactory" />
+    <lang.braceMatcher language="TDSL" implementationClass="tigase.idea.tdsl.TDSLBraceMatcher" />
     <lang.commenter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLCommenter" />
     <lang.formatter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLFormattingModelBuilder" />
     <lang.parserDefinition language="TDSL" implementationClass="tigase.idea.tdsl.TDSLParserDefinition" />

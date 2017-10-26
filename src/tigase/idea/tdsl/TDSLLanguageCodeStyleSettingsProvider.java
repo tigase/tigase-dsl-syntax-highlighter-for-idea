@@ -22,8 +22,10 @@ package tigase.idea.tdsl;
 
 import com.intellij.lang.Language;
 import com.intellij.psi.codeStyle.CodeStyleSettingsCustomizable;
+import com.intellij.psi.codeStyle.CommonCodeStyleSettings;
 import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class TDSLLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {
 
@@ -31,6 +33,21 @@ public class TDSLLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSett
 	@Override
 	public Language getLanguage() {
 		return TDSLLanguage.INSTANCE;
+	}
+
+	@Nullable
+	@Override
+	public CommonCodeStyleSettings getDefaultCommonSettings() {
+		CommonCodeStyleSettings common = new CommonCodeStyleSettings(TDSLLanguage.INSTANCE);
+		CommonCodeStyleSettings.IndentOptions indentOptions = common.initIndentOptions();
+		indentOptions.INDENT_SIZE = 4;
+		indentOptions.CONTINUATION_INDENT_SIZE = 4;
+		common.SPACE_AROUND_ASSIGNMENT_OPERATORS = true;
+		common.SPACE_AFTER_COMMA = true;
+		common.SPACE_AROUND_ADDITIVE_OPERATORS = true;
+		common.SPACE_AFTER_COLON = true;
+		common.SPACE_BEFORE_METHOD_CALL_PARENTHESES = true;
+		return common;
 	}
 
 	@Override

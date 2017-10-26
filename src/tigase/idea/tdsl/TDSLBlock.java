@@ -54,34 +54,40 @@ public class TDSLBlock extends AbstractBlock {
 	@Override
 	protected List<Block> buildChildren() {
 		List<Block> blocks = new ArrayList<>();
-		ASTNode child = myNode.getFirstChildNode();
+		buildChildren(blocks, myNode);
+		return blocks;
+	}
+
+	private void buildChildren(List<Block> blocks, ASTNode node) {
+		ASTNode child = node.getFirstChildNode();
 		while (child != null) {
-//			if (child.getElementType() != TokenType.WHITE_SPACE) {
-//				Block block = new TDSLBlock(child, Wrap.createWrap(WrapType.NONE, false), Alignment.createAlignment(), spacingBuilder);
-//				blocks.add(block);
-//			}
-			if (child.getElementType() == TDSLTypes.BEAN) {
-				Block block = new TDSLBlock(child, Wrap.createWrap(WrapType.NORMAL, false), Alignment.createAlignment(), spacingBuilder);
-				blocks.add(block);
-			} else if (child.getElementType() != TokenType.WHITE_SPACE) {
-				Block block = new TDSLBlock(child, Wrap.createWrap(WrapType.NORMAL, false), Alignment.createAlignment(), spacingBuilder);
+			if (child.getElementType() != TokenType.WHITE_SPACE
+					) {
+				Block block = new TDSLBlock(child, /*Wrap.createWrap(WrapType.NONE, false)*/ null, /*Alignment.createAlignment()*/ null,
+											spacingBuilder);
 				blocks.add(block);
 			}
 			child = child.getTreeNext();
 		}
-		return blocks;
 	}
 
 	@Override
 	public Indent getIndent() {
-		if (myNode.getElementType() == TDSLTypes.PROP || myNode.getElementType() == TDSLTypes.BEAN) {
-			ASTNode parent = myNode.getTreeParent();
-			if (parent != null && parent.getElementType() == TDSLTypes.BEAN) {
-				return Indent.getIndent(Indent.Type.NORMAL, true, true);
-			}
-		}
 		if (myNode.getElementType() == TDSLTypes.COMMENT) {
 			return Indent.getAbsoluteNoneIndent();
+		}
+
+		ASTNode parent = myNode.getTreeParent();
+		if (parent != null && parent.getElementType() == TDSLTypes.BEAN_CONTENT
+				&& myNode.getElementType() != TDSLTypes.LCURLY && myNode.getElementType() != TDSLTypes.RCURLY) {
+			return Indent.getIndent(Indent.Type.NORMAL, false, false);
+		}
+		if (parent != null && parent.getElementType() == TDSLTypes.LIST_VALUE) {
+			if (myNode.getElementType() == TDSLTypes.RBRACK) {
+				return Indent.getSpaceIndent(0, true);
+			} else {
+				return Indent.getSpaceIndent(2, true);
+			}
 		}
 		return Indent.getNoneIndent();
 	}

@@ -33,9 +33,9 @@ public class TDSLValueImpl extends ASTWrapperPsiElement implements TDSLValue {
   }
 
   @Override
-  @NotNull
-  public List<TDSLValue> getValueList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TDSLValue.class);
+  @Nullable
+  public TDSLListValue getListValue() {
+    return findChildByClass(TDSLListValue.class);
   }
 
   @Override

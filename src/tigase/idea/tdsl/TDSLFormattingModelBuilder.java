@@ -26,6 +26,7 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
+import com.intellij.psi.codeStyle.CommonCodeStyleSettings;
 import com.intellij.psi.tree.TokenSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -43,8 +44,9 @@ public class TDSLFormattingModelBuilder implements FormattingModelBuilder {
 																					 Wrap.createWrap(WrapType.NONE, false), Alignment.createAlignment(), createSpaceBuilder(settings)), settings);
 	}
 
-	private static SpacingBuilder createSpaceBuilder(CodeStyleSettings settings) {
-		return new SpacingBuilder(settings, TDSLLanguage.INSTANCE).around(TDSLTypes.ASSIGNMENT)
+	private static SpacingBuilder createSpaceBuilder(CodeStyleSettings globalSettings) {
+		CommonCodeStyleSettings settings = globalSettings.getCommonSettings(TDSLLanguage.INSTANCE);
+		return new SpacingBuilder(globalSettings, TDSLLanguage.INSTANCE).around(TDSLTypes.ASSIGNMENT)
 				.spaceIf(settings.SPACE_AROUND_ASSIGNMENT_OPERATORS)
 				.before(TDSLTypes.PROP)
 				.none()

@@ -7,14 +7,11 @@ import com.intellij.psi.PsiElement;
 
 public interface TDSLBean extends PsiElement {
 
-  @NotNull
-  List<TDSLBean> getBeanList();
-
   @Nullable
   TDSLBeanCfg getBeanCfg();
 
   @NotNull
-  List<TDSLProp> getPropList();
+  TDSLBeanContent getBeanContent();
 
   @NotNull
   PsiElement getBeanName();

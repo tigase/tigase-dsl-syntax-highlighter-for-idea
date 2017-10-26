@@ -19,7 +19,15 @@ public class TDSLVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitBeanContent(@NotNull TDSLBeanContent o) {
+    visitPsiElement(o);
+  }
+
   public void visitEnvFunction(@NotNull TDSLEnvFunction o) {
+    visitPsiElement(o);
+  }
+
+  public void visitListValue(@NotNull TDSLListValue o) {
     visitPsiElement(o);
   }
 

@@ -41,9 +41,11 @@ root ::= (prop|bean|COMMENT)*
 //beanName ::= objName
 beanCfgPropPair ::= beanCfgPropName colon (boolean|beanCfgPropValue)
 beanCfg ::= LPAREN [ beanCfgPropPair (comma beanCfgPropPair)* ] RPAREN
-bean ::= beanName [ beanCfg] LCURLY [ (prop|bean|COMMENT)* ] RCURLY
+beanContent ::= LCURLY [ (prop|bean|COMMENT)* ] RCURLY
+bean ::= beanName [ beanCfg] beanContent
 
 //expression ::= value expressionOperator value
 envFunction ::= envPropFnName LPAREN string ("," string)? RPAREN
-value ::= (number (operatorAdd|operatorSubstract|operatorMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (LBRACK value (comma value)* RBRACK) | envFunction | string | number | boolean
+listValue ::= LBRACK value (comma value)* RBRACK
+value ::= (number (operatorAdd|operatorSubstract|operatorMultiply|operatorDivide) number) | ((string|envFunction) operatorAdd (string|envFunction)) | (listValue) | envFunction | string | number | boolean
 prop ::= propName ASSIGNMENT value
