@@ -1,15 +1,20 @@
 <idea-plugin>
   <id>tigase.idea.tdsl</id>
   <name>Tigase DSL support</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="support@tigase.com" url="http://tigase.net">Tigase, Inc.</vendor>
 
   <description><![CDATA[
-      Adds support for Tigase DSL file format used by Tigase XMPP Server configuration files from version 8.0.0.
+      Adds support for Tigase DSL file format used by <a href="http://tigase.net/">Tigase XMPP Server</a> configuration files from version 8.0.0.
     ]]></description>
 
   <change-notes><![CDATA[
-      Initial version of a plugin.
+  <dl>
+      <dt>Version 1.1</dt>
+      <dd>Minor fixes and improvements related to code reformatting.</dd>
+      <dt>Version 1.0</dt>
+      <dd>Initial version of a plugin.</dd>
+  </dl>
     ]]>
   </change-notes>
 
