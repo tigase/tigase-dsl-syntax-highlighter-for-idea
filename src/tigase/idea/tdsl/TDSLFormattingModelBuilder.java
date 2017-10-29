@@ -32,17 +32,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tigase.idea.tdsl.psi.TDSLTypes;
 
-public class TDSLFormattingModelBuilder implements FormattingModelBuilder {
+public class TDSLFormattingModelBuilder
+		implements FormattingModelBuilder {
 
-	private static final TokenSet OPERATORS = TokenSet.create(TDSLTypes.OPERATORADD, TDSLTypes.OPERATORDIVIDE, TDSLTypes.OPERATORMULTIPLY, TDSLTypes.OPERATORSUBSTRACT);
-
-	@NotNull
-	@Override
-	public FormattingModel createModel(PsiElement element, CodeStyleSettings settings) {
-		return FormattingModelProvider.createFormattingModelForPsiFile(element.getContainingFile(),
-																	   new TDSLBlock(element.getNode(),
-																					 Wrap.createWrap(WrapType.NONE, false), Alignment.createAlignment(), createSpaceBuilder(settings)), settings);
-	}
+	private static final TokenSet OPERATORS = TokenSet.create(TDSLTypes.OPERATORADD, TDSLTypes.OPERATORDIVIDE,
+															  TDSLTypes.OPERATORMULTIPLY, TDSLTypes.OPERATORSUBSTRACT);
 
 	private static SpacingBuilder createSpaceBuilder(CodeStyleSettings globalSettings) {
 		CommonCodeStyleSettings settings = globalSettings.getCommonSettings(TDSLLanguage.INSTANCE);
@@ -56,9 +50,24 @@ public class TDSLFormattingModelBuilder implements FormattingModelBuilder {
 				.before(TDSLTypes.BEANCFGPROPNAME)
 				.none()
 				// space around operators
-				.around(OPERATORS).spaceIf(settings.SPACE_AROUND_ADDITIVE_OPERATORS)
-				.after(TDSLTypes.COMMA).spaceIf(settings.SPACE_AFTER_COMMA)
-				.after(TDSLTypes.COLON).spaceIf(settings.SPACE_AFTER_COLON);
+				.around(OPERATORS)
+				.spaceIf(settings.SPACE_AROUND_ADDITIVE_OPERATORS)
+				.after(TDSLTypes.COMMA)
+				.spaceIf(settings.SPACE_AFTER_COMMA)
+				.after(TDSLTypes.COLON)
+				.spaceIf(settings.SPACE_AFTER_COLON);
+	}
+
+	@NotNull
+	@Override
+	public FormattingModel createModel(PsiElement element, CodeStyleSettings settings) {
+		return FormattingModelProvider.createFormattingModelForPsiFile(element.getContainingFile(),
+																	   new TDSLBlock(element.getNode(),
+																					 Wrap.createWrap(WrapType.NONE,
+																									 false),
+																					 Alignment.createAlignment(),
+																					 createSpaceBuilder(settings)),
+																	   settings);
 	}
 
 	@Nullable

@@ -24,7 +24,8 @@ import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
 import tigase.idea.tdsl.TDSLLanguage;
 
-public class TDSLTokenType extends IElementType {
+public class TDSLTokenType
+		extends IElementType {
 
 	public TDSLTokenType(@NotNull String debugName) {
 		super(debugName, TDSLLanguage.INSTANCE);

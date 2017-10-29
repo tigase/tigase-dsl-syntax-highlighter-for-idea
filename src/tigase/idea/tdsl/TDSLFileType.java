@@ -26,7 +26,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class TDSLFileType extends LanguageFileType {
+public class TDSLFileType
+		extends LanguageFileType {
 
 	public static final TDSLFileType INSTANCE = new TDSLFileType();
 

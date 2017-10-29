@@ -28,11 +28,12 @@ import java.util.Stack;
 import static tigase.idea.tdsl.TDSLParserDefinition.LEFT_BRACES;
 import static tigase.idea.tdsl.psi.TDSLTypes.*;
 
-public abstract class TDSLLexerBase implements FlexLexer {
+public abstract class TDSLLexerBase
+		implements FlexLexer {
 
 	public final Stack<Integer> stateStack = new Stack<>();
 	private final Stack<IElementType> bracesStack = new Stack<>();
-	
+
 	protected void yybeginstate(int... states) {
 		for (int state : states) {
 			stateStack.push(state);
@@ -47,8 +48,7 @@ public abstract class TDSLLexerBase implements FlexLexer {
 	protected IElementType storeToken(IElementType tokenType) {
 		if (LEFT_BRACES.contains(tokenType)) {
 			bracesStack.push(tokenType);
-		}
-		else if (tokenType == RCURLY) {
+		} else if (tokenType == RCURLY) {
 			IElementType leftType = LCURLY;
 			while (!bracesStack.isEmpty() && leftType != bracesStack.peek()) {
 				bracesStack.pop();
@@ -56,8 +56,7 @@ public abstract class TDSLLexerBase implements FlexLexer {
 			if (!bracesStack.isEmpty() && leftType == bracesStack.peek()) {
 				bracesStack.pop();
 			}
-		}
-		else if (tokenType == RPAREN || tokenType == RBRACK) {
+		} else if (tokenType == RPAREN || tokenType == RBRACK) {
 			if (!bracesStack.isEmpty() && bracesStack.peek() != LCURLY) {
 				bracesStack.pop();
 			}
@@ -77,7 +76,6 @@ public abstract class TDSLLexerBase implements FlexLexer {
 		return !bracesStack.empty() && bracesStack.peek() != LCURLY;
 	}
 
-
 	protected abstract int getInitialState();
-	
+
 }

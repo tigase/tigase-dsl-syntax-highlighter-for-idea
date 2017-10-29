@@ -31,7 +31,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Map;
 
-public class TDSLColorSettingsPage implements ColorSettingsPage {
+public class TDSLColorSettingsPage
+		implements ColorSettingsPage {
 
 	private static final AttributesDescriptor[] DESCRIPTORS = {
 			new AttributesDescriptor("Separator", TDSLSyntaxHighlighter.SEPARATOR),
@@ -42,9 +43,9 @@ public class TDSLColorSettingsPage implements ColorSettingsPage {
 			new AttributesDescriptor("Brackets", TDSLSyntaxHighlighter.BRACKETS),
 			new AttributesDescriptor("Operators", TDSLSyntaxHighlighter.OPERATOR),
 			new AttributesDescriptor("Property name", TDSLSyntaxHighlighter.PROPERTY_NAME),
-			new AttributesDescriptor("Environment variable/property read function", TDSLSyntaxHighlighter.ENVPROPFNNAME),
-			new AttributesDescriptor("Comment", TDSLSyntaxHighlighter.COMMENT)
-	};
+			new AttributesDescriptor("Environment variable/property read function",
+									 TDSLSyntaxHighlighter.ENVPROPFNNAME),
+			new AttributesDescriptor("Comment", TDSLSyntaxHighlighter.COMMENT)};
 
 	@Nullable
 	@Override

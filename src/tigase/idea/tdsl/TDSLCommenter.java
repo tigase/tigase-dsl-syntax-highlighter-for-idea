@@ -23,7 +23,8 @@ package tigase.idea.tdsl;
 import com.intellij.lang.Commenter;
 import org.jetbrains.annotations.Nullable;
 
-public class TDSLCommenter implements Commenter {
+public class TDSLCommenter
+		implements Commenter {
 
 	@Nullable
 	@Override

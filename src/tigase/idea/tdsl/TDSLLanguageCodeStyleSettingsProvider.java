@@ -27,7 +27,8 @@ import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class TDSLLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {
+public class TDSLLanguageCodeStyleSettingsProvider
+		extends LanguageCodeStyleSettingsProvider {
 
 	@NotNull
 	@Override
@@ -82,5 +83,5 @@ public class TDSLLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSett
 				"    x = 'tst'\n" + "}\n" + "\n" + "test2 (class: tigase.server.XMPPServer, active: true) {\n" + "}\n" +
 				"\n" + "#comment\n" + "test1 () {\n" + "    wpis = 'ss'\n" + "}\n";
 	}
-	
+
 }

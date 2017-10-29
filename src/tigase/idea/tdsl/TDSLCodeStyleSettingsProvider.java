@@ -30,7 +30,8 @@ import com.intellij.psi.codeStyle.CustomCodeStyleSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class TDSLCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
+public class TDSLCodeStyleSettingsProvider
+		extends CodeStyleSettingsProvider {
 
 	@Nullable
 	@Override
@@ -48,22 +49,23 @@ public class TDSLCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
 	@Override
 	public Configurable createSettingsPage(CodeStyleSettings settings, CodeStyleSettings originalSettings) {
 		return new CodeStyleAbstractConfigurable(settings, originalSettings, "TDSL") {
-			@Override
-			protected CodeStyleAbstractPanel createPanel(CodeStyleSettings settings) {
-				return new TDSLCodeStyleMainPanel(getCurrentSettings(), settings);
-			}
-
 			@Nullable
 			@Override
 			public String getHelpTopic() {
 				return null;
 			}
+
+			@Override
+			protected CodeStyleAbstractPanel createPanel(CodeStyleSettings settings) {
+				return new TDSLCodeStyleMainPanel(getCurrentSettings(), settings);
+			}
 		};
 	}
 
-	private static class TDSLCodeStyleMainPanel extends TabbedLanguageCodeStylePanel {
-		protected TDSLCodeStyleMainPanel(CodeStyleSettings currentSettings,
-										 CodeStyleSettings settings) {
+	private static class TDSLCodeStyleMainPanel
+			extends TabbedLanguageCodeStylePanel {
+
+		protected TDSLCodeStyleMainPanel(CodeStyleSettings currentSettings, CodeStyleSettings settings) {
 			super(TDSLLanguage.INSTANCE, currentSettings, settings);
 		}
 	}

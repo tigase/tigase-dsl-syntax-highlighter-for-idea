@@ -31,11 +31,13 @@ import tigase.idea.tdsl.psi.TDSLTypes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TDSLBlock extends AbstractBlock {
+public class TDSLBlock
+		extends AbstractBlock {
 
 	private final SpacingBuilder spacingBuilder;
 
-	protected TDSLBlock(@NotNull ASTNode node, @Nullable Wrap wrap, @Nullable Alignment alignment, SpacingBuilder spacingBuilder) {
+	protected TDSLBlock(@NotNull ASTNode node, @Nullable Wrap wrap, @Nullable Alignment alignment,
+						SpacingBuilder spacingBuilder) {
 		super(node, wrap, alignment);
 		this.spacingBuilder = spacingBuilder;
 	}
@@ -52,34 +54,14 @@ public class TDSLBlock extends AbstractBlock {
 	}
 
 	@Override
-	protected List<Block> buildChildren() {
-		List<Block> blocks = new ArrayList<>();
-		buildChildren(blocks, myNode);
-		return blocks;
-	}
-
-	private void buildChildren(List<Block> blocks, ASTNode node) {
-		ASTNode child = node.getFirstChildNode();
-		while (child != null) {
-			if (child.getElementType() != TokenType.WHITE_SPACE
-					) {
-				Block block = new TDSLBlock(child, /*Wrap.createWrap(WrapType.NONE, false)*/ null, /*Alignment.createAlignment()*/ null,
-											spacingBuilder);
-				blocks.add(block);
-			}
-			child = child.getTreeNext();
-		}
-	}
-
-	@Override
 	public Indent getIndent() {
 		if (myNode.getElementType() == TDSLTypes.COMMENT) {
 			return Indent.getAbsoluteNoneIndent();
 		}
 
 		ASTNode parent = myNode.getTreeParent();
-		if (parent != null && parent.getElementType() == TDSLTypes.BEAN_CONTENT
-				&& myNode.getElementType() != TDSLTypes.LCURLY && myNode.getElementType() != TDSLTypes.RCURLY) {
+		if (parent != null && parent.getElementType() == TDSLTypes.BEAN_CONTENT &&
+				myNode.getElementType() != TDSLTypes.LCURLY && myNode.getElementType() != TDSLTypes.RCURLY) {
 			return Indent.getIndent(Indent.Type.NORMAL, false, false);
 		}
 		if (parent != null && parent.getElementType() == TDSLTypes.LIST_VALUE) {
@@ -90,6 +72,25 @@ public class TDSLBlock extends AbstractBlock {
 			}
 		}
 		return Indent.getNoneIndent();
+	}
+
+	@Override
+	protected List<Block> buildChildren() {
+		List<Block> blocks = new ArrayList<>();
+		buildChildren(blocks, myNode);
+		return blocks;
+	}
+
+	private void buildChildren(List<Block> blocks, ASTNode node) {
+		ASTNode child = node.getFirstChildNode();
+		while (child != null) {
+			if (child.getElementType() != TokenType.WHITE_SPACE) {
+				Block block = new TDSLBlock(child, /*Wrap.createWrap(WrapType.NONE, false)*/ null, /*Alignment.createAlignment()*/
+											null, spacingBuilder);
+				blocks.add(block);
+			}
+			child = child.getTreeNext();
+		}
 	}
 
 }

@@ -32,39 +32,50 @@ import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.LINE_
 import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.OPERATION_SIGN;
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
-public class TDSLSyntaxHighlighter extends SyntaxHighlighterBase {
+public class TDSLSyntaxHighlighter
+		extends SyntaxHighlighterBase {
 
-	public static final TextAttributesKey SEPARATOR = createTextAttributesKey("TDSL_SEPARATOR",
-																								OPERATION_SIGN);
+	public static final TextAttributesKey SEPARATOR = createTextAttributesKey("TDSL_SEPARATOR", OPERATION_SIGN);
 	public static final TextAttributesKey COMMENT = createTextAttributesKey("TDSL_COMMENT", LINE_COMMENT);
 
-	public static final TextAttributesKey STRING = createTextAttributesKey("TDSL_STRING", DefaultLanguageHighlighterColors.STRING);
-	public static final TextAttributesKey NUMBER = createTextAttributesKey("TDSL_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
-	public static final TextAttributesKey BOOLEAN = createTextAttributesKey("TDSL_BOOLEAN", DefaultLanguageHighlighterColors.IDENTIFIER);
-	public static final TextAttributesKey BEAN_NAME = createTextAttributesKey("TDSL_BEAN_NAME", DefaultLanguageHighlighterColors.IDENTIFIER);
-	public static final TextAttributesKey BEAN_CFG_PROP_NAME = createTextAttributesKey("TDSL_BEAN_CFG_PROP_NAME", DefaultLanguageHighlighterColors.IDENTIFIER);
-	public static final TextAttributesKey OPERATOR = createTextAttributesKey("TDSL_OPERATOR", DefaultLanguageHighlighterColors.OPERATION_SIGN);
-	public static final TextAttributesKey BRACES = createTextAttributesKey("TDSL_BRACES", DefaultLanguageHighlighterColors.BRACES);
-	public static final TextAttributesKey PARENTHESIS = createTextAttributesKey("TDSL_PARENTHESIS", DefaultLanguageHighlighterColors.PARENTHESES);
-	public static final TextAttributesKey BRACKETS = createTextAttributesKey("TDSL_BRACKETS", DefaultLanguageHighlighterColors.BRACKETS);
-	public static final TextAttributesKey ENVPROPFNNAME = createTextAttributesKey("TDSL_ENVPROPFNNAME", DefaultLanguageHighlighterColors.KEYWORD);
-	public static final TextAttributesKey PROPERTY_NAME = createTextAttributesKey("TDSL_PROPERTY_NAME", DefaultLanguageHighlighterColors.IDENTIFIER);
+	public static final TextAttributesKey STRING = createTextAttributesKey("TDSL_STRING",
+																		   DefaultLanguageHighlighterColors.STRING);
+	public static final TextAttributesKey NUMBER = createTextAttributesKey("TDSL_NUMBER",
+																		   DefaultLanguageHighlighterColors.NUMBER);
+	public static final TextAttributesKey BOOLEAN = createTextAttributesKey("TDSL_BOOLEAN",
+																			DefaultLanguageHighlighterColors.IDENTIFIER);
+	public static final TextAttributesKey BEAN_NAME = createTextAttributesKey("TDSL_BEAN_NAME",
+																			  DefaultLanguageHighlighterColors.IDENTIFIER);
+	public static final TextAttributesKey BEAN_CFG_PROP_NAME = createTextAttributesKey("TDSL_BEAN_CFG_PROP_NAME",
+																					   DefaultLanguageHighlighterColors.IDENTIFIER);
+	public static final TextAttributesKey OPERATOR = createTextAttributesKey("TDSL_OPERATOR",
+																			 DefaultLanguageHighlighterColors.OPERATION_SIGN);
+	public static final TextAttributesKey BRACES = createTextAttributesKey("TDSL_BRACES",
+																		   DefaultLanguageHighlighterColors.BRACES);
+	public static final TextAttributesKey PARENTHESIS = createTextAttributesKey("TDSL_PARENTHESIS",
+																				DefaultLanguageHighlighterColors.PARENTHESES);
+	public static final TextAttributesKey BRACKETS = createTextAttributesKey("TDSL_BRACKETS",
+																			 DefaultLanguageHighlighterColors.BRACKETS);
+	public static final TextAttributesKey ENVPROPFNNAME = createTextAttributesKey("TDSL_ENVPROPFNNAME",
+																				  DefaultLanguageHighlighterColors.KEYWORD);
+	public static final TextAttributesKey PROPERTY_NAME = createTextAttributesKey("TDSL_PROPERTY_NAME",
+																				  DefaultLanguageHighlighterColors.IDENTIFIER);
 
-	public static final TextAttributesKey[] SEPARATOR_KEYS = { SEPARATOR };
-	public static final TextAttributesKey[] COMMENT_KEYS = { COMMENT };
+	public static final TextAttributesKey[] SEPARATOR_KEYS = {SEPARATOR};
+	public static final TextAttributesKey[] COMMENT_KEYS = {COMMENT};
 	public static final TextAttributesKey[] EMPTY_KEYS = {};
 
-	public static final TextAttributesKey[] STRING_KEYS = { STRING };
-	public static final TextAttributesKey[] NUMBER_KEYS = { NUMBER };
-	public static final TextAttributesKey[] BOOLEAN_KEYS = { BOOLEAN };
-	public static final TextAttributesKey[] BEAN_NAME_KEYS = { BEAN_NAME };
-	public static final TextAttributesKey[] BEAN_CFG_PROP_NAME_KEYS = { BEAN_CFG_PROP_NAME };
-	public static final TextAttributesKey[] OPERATOR_KEYS = { OPERATOR };
-	public static final TextAttributesKey[] BRACES_KEYS = { BRACES };
-	public static final TextAttributesKey[] PARENTHESIS_KEYS = { PARENTHESIS };
-	public static final TextAttributesKey[] BRACKETS_KEYS = { BRACKETS };
-	public static final TextAttributesKey[] ENVPROPFNNAME_KEYS = { ENVPROPFNNAME };
-	public static final TextAttributesKey[] PROPERTY_NAME_KEYS = { PROPERTY_NAME };
+	public static final TextAttributesKey[] STRING_KEYS = {STRING};
+	public static final TextAttributesKey[] NUMBER_KEYS = {NUMBER};
+	public static final TextAttributesKey[] BOOLEAN_KEYS = {BOOLEAN};
+	public static final TextAttributesKey[] BEAN_NAME_KEYS = {BEAN_NAME};
+	public static final TextAttributesKey[] BEAN_CFG_PROP_NAME_KEYS = {BEAN_CFG_PROP_NAME};
+	public static final TextAttributesKey[] OPERATOR_KEYS = {OPERATOR};
+	public static final TextAttributesKey[] BRACES_KEYS = {BRACES};
+	public static final TextAttributesKey[] PARENTHESIS_KEYS = {PARENTHESIS};
+	public static final TextAttributesKey[] BRACKETS_KEYS = {BRACKETS};
+	public static final TextAttributesKey[] ENVPROPFNNAME_KEYS = {ENVPROPFNNAME};
+	public static final TextAttributesKey[] PROPERTY_NAME_KEYS = {PROPERTY_NAME};
 
 	@NotNull
 	@Override
@@ -91,7 +102,8 @@ public class TDSLSyntaxHighlighter extends SyntaxHighlighterBase {
 			return BEAN_NAME_KEYS;
 		} else if (tokenType.equals(TDSLTypes.BEANCFGPROPNAME)) {
 			return BEAN_CFG_PROP_NAME_KEYS;
-		} else if (tokenType.equals(TDSLTypes.OPERATORADD) || tokenType.equals(TDSLTypes.OPERATORSUBSTRACT) || tokenType.equals(TDSLTypes.OPERATORMULTIPLY) || tokenType.equals(TDSLTypes.OPERATORDIVIDE)) {
+		} else if (tokenType.equals(TDSLTypes.OPERATORADD) || tokenType.equals(TDSLTypes.OPERATORSUBSTRACT) ||
+				tokenType.equals(TDSLTypes.OPERATORMULTIPLY) || tokenType.equals(TDSLTypes.OPERATORDIVIDE)) {
 			return OPERATOR_KEYS;
 		} else if (tokenType.equals(TDSLTypes.LCURLY) || tokenType.equals(TDSLTypes.RCURLY)) {
 			return BRACES_KEYS;

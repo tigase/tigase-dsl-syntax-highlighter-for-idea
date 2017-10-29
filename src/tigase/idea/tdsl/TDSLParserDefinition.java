@@ -36,7 +36,8 @@ import tigase.idea.tdsl.psi.TDSLFile;
 import tigase.idea.tdsl.psi.TDSLParser;
 import tigase.idea.tdsl.psi.TDSLTypes;
 
-public class TDSLParserDefinition implements ParserDefinition {
+public class TDSLParserDefinition
+		implements ParserDefinition {
 
 	public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
 	public static final TokenSet COMMENTS = TokenSet.create(TDSLTypes.COMMENT);

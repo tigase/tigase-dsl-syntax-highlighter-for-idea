@@ -24,7 +24,8 @@ import com.intellij.lexer.FlexAdapter;
 
 import java.io.Reader;
 
-public class TDSLLexerAdapter extends FlexAdapter {
+public class TDSLLexerAdapter
+		extends FlexAdapter {
 
 	public TDSLLexerAdapter() {
 		super(new TDSLLexer((Reader) null));

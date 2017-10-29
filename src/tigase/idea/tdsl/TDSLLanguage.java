@@ -22,7 +22,8 @@ package tigase.idea.tdsl;
 
 import com.intellij.lang.Language;
 
-public class TDSLLanguage extends Language {
+public class TDSLLanguage
+		extends Language {
 
 	public static final TDSLLanguage INSTANCE = new TDSLLanguage();
 

@@ -23,7 +23,8 @@ package tigase.idea.tdsl;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.intellij.psi.codeStyle.CustomCodeStyleSettings;
 
-public class TDSLCodeStyleSettings extends CustomCodeStyleSettings {
+public class TDSLCodeStyleSettings
+		extends CustomCodeStyleSettings {
 
 	protected TDSLCodeStyleSettings(CodeStyleSettings container) {
 		super("TDSLCodeStyleSettings", container);

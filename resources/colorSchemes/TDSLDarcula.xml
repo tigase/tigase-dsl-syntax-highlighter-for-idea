@@ -2,22 +2,22 @@
 <list>
     <option name="TDSL_SEPARATOR">
         <value>
-            <option name="FOREGROUND" value="859900" />
+            <option name="FOREGROUND" value="859900"/>
         </value>
     </option>
     <option name="TDSL_BOOLEAN">
         <value>
-            <option name="FOREGROUND" value="b58900" />
+            <option name="FOREGROUND" value="b58900"/>
         </value>
     </option>
     <option name="TDSL_BEAN_NAME">
         <value>
-            <option name="FOREGROUND" value="268bd2" />
+            <option name="FOREGROUND" value="268bd2"/>
         </value>
     </option>
     <option name="TDSL_BEAN_CFG_PROP_NAME">
         <value>
-            <option name="FOREGROUND" value="859900" />
+            <option name="FOREGROUND" value="859900"/>
         </value>
     </option>
 </list>

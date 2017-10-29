@@ -1,14 +1,14 @@
 <idea-plugin>
-  <id>tigase.idea.tdsl</id>
-  <name>Tigase DSL support</name>
-  <version>1.1</version>
-  <vendor email="support@tigase.com" url="http://tigase.net">Tigase, Inc.</vendor>
+    <id>tigase.idea.tdsl</id>
+    <name>Tigase DSL support</name>
+    <version>1.1</version>
+    <vendor email="support@tigase.com" url="http://tigase.net">Tigase, Inc.</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       Adds support for Tigase DSL file format used by <a href="http://tigase.net/">Tigase XMPP Server</a> configuration files from version 8.0.0.
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
   <dl>
       <dt>Version 1.1</dt>
       <dd>Minor fixes and improvements related to code reformatting.</dd>
@@ -16,36 +16,37 @@
       <dd>Initial version of a plugin.</dd>
   </dl>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="145.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-    <additionalTextAttributes scheme="Darcula" file="colorSchemes/TDSLDarcula.xml"/>
-    <additionalTextAttributes scheme="Default" file="colorSchemes/TDSLDefault.xml"/>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/TDSLDarcula.xml"/>
+        <additionalTextAttributes scheme="Default" file="colorSchemes/TDSLDefault.xml"/>
 
-    <fileTypeFactory implementation="tigase.idea.tdsl.TDSLFileTypeFactory" />
-    <lang.braceMatcher language="TDSL" implementationClass="tigase.idea.tdsl.TDSLBraceMatcher" />
-    <lang.commenter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLCommenter" />
-    <lang.formatter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLFormattingModelBuilder" />
-    <lang.parserDefinition language="TDSL" implementationClass="tigase.idea.tdsl.TDSLParserDefinition" />
-    <lang.syntaxHighlighterFactory language="TDSL" implementationClass="tigase.idea.tdsl.TDSLSyntaxHighlighterFactory" />
-    <colorSettingsPage implementation="tigase.idea.tdsl.TDSLColorSettingsPage" />
+        <fileTypeFactory implementation="tigase.idea.tdsl.TDSLFileTypeFactory"/>
+        <lang.braceMatcher language="TDSL" implementationClass="tigase.idea.tdsl.TDSLBraceMatcher"/>
+        <lang.commenter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLCommenter"/>
+        <lang.formatter language="TDSL" implementationClass="tigase.idea.tdsl.TDSLFormattingModelBuilder"/>
+        <lang.parserDefinition language="TDSL" implementationClass="tigase.idea.tdsl.TDSLParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="TDSL"
+                                       implementationClass="tigase.idea.tdsl.TDSLSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="tigase.idea.tdsl.TDSLColorSettingsPage"/>
 
-    <codeStyleSettingsProvider implementation="tigase.idea.tdsl.TDSLCodeStyleSettingsProvider" />
-    <langCodeStyleSettingsProvider implementation="tigase.idea.tdsl.TDSLLanguageCodeStyleSettingsProvider" />
-  </extensions>
+        <codeStyleSettingsProvider implementation="tigase.idea.tdsl.TDSLCodeStyleSettingsProvider"/>
+        <langCodeStyleSettingsProvider implementation="tigase.idea.tdsl.TDSLLanguageCodeStyleSettingsProvider"/>
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
 
 </idea-plugin>

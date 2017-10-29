@@ -30,7 +30,8 @@ import tigase.idea.tdsl.TDSLLanguage;
 
 import javax.swing.*;
 
-public class TDSLFile extends PsiFileBase {
+public class TDSLFile
+		extends PsiFileBase {
 
 	public TDSLFile(@NotNull FileViewProvider viewProvider) {
 		super(viewProvider, TDSLLanguage.INSTANCE);
